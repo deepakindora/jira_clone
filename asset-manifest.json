@@ -1,7 +1,7 @@
 {
   "main.css": "/jira_clone/static/css/main.531a0b6b.chunk.css",
-  "main.js": "/jira_clone/static/js/main.a2840187.chunk.js",
-  "main.js.map": "/jira_clone/static/js/main.a2840187.chunk.js.map",
+  "main.js": "/jira_clone/static/js/main.c3859987.chunk.js",
+  "main.js.map": "/jira_clone/static/js/main.c3859987.chunk.js.map",
   "static/js/1.d11720e8.chunk.js": "/jira_clone/static/js/1.d11720e8.chunk.js",
   "static/js/1.d11720e8.chunk.js.map": "/jira_clone/static/js/1.d11720e8.chunk.js.map",
   "static/css/2.d81544c8.chunk.css": "/jira_clone/static/css/2.d81544c8.chunk.css",
@@ -12,6 +12,6 @@
   "static/css/main.531a0b6b.chunk.css.map": "/jira_clone/static/css/main.531a0b6b.chunk.css.map",
   "static/css/2.d81544c8.chunk.css.map": "/jira_clone/static/css/2.d81544c8.chunk.css.map",
   "index.html": "/jira_clone/index.html",
-  "precache-manifest.3958bbf2085f72820ee71116bc2b8970.js": "/jira_clone/precache-manifest.3958bbf2085f72820ee71116bc2b8970.js",
+  "precache-manifest.cfa26beeb2969813a86069fa9efa6f20.js": "/jira_clone/precache-manifest.cfa26beeb2969813a86069fa9efa6f20.js",
   "service-worker.js": "/jira_clone/service-worker.js"
 }
