@@ -51,7 +51,7 @@ function AddBacklog() {
           className="btn-primary"
           type="submit"
           id="submit"
-          disabled={backlogName.length <= 2 ? true : false}
+          disabled={backlogName.length <= 2}
         >
           Add Backlog
         </button>
