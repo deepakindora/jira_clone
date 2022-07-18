@@ -130,7 +130,7 @@ export default function ViewBacklog() {
                         className="btn-primary mybtn"
                         onClick={() => leftClick(state.id, cards.cid)}
                         disabled={
-                          state.id === 1 || state.id === 4 ? true : false
+                          state.id === 1 || state.id === 4
                         }
                       >
                         {"<"}
@@ -138,7 +138,7 @@ export default function ViewBacklog() {
                       <button
                         className="btn-primary mybtn"
                         onClick={() => rightClick(state.id, cards.cid)}
-                        disabled={state.id === 4 ? true : false}
+                        disabled={state.id === 4}
                       >
                         {">"}
                       </button>
