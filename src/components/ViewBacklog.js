@@ -5,8 +5,8 @@ import { Container, Row, Col, Stack } from "react-bootstrap";
 export default function ViewBacklog() {
   const [state, setState] = useContext(BacklogContext);
 
-  // ************************ Left Click Functionality *****************************************
-  const leftClick = (id, cid) => {
+  // ************************ Both Click Functionality *****************************************
+  const clickEvent = (id, cid, click) => {
     const backlogCard = state.map((state) => {
       return state.id === id
         ? state.cards.filter((card) => {
@@ -19,51 +19,12 @@ export default function ViewBacklog() {
 
     const newTodoCard = {
       name: backlogCard[id - 1][0].name,
-      stage: id - 2,
+      stage: click > 1 ? id - 2 : id,
       cid: backlogCard[id - 1][0].cid,
     };
 
     const newState1 = state.map((obj) => {
-      if (obj.id === id - 1) {
-        obj.cards.push(newTodoCard);
-        return { ...obj, cards: obj.cards };
-      }
-
-      if (obj.id === id) {
-        return {
-          ...obj,
-          cards: obj.cards.filter((el) => {
-            return el.cid !== cid;
-          }),
-        };
-      }
-
-      return obj;
-    });
-
-    setState(newState1);
-  };
-
-  // ************************ Right Click Functionality *****************************************
-  const rightClick = (id, cid) => {
-    const backlogCard = state.map((state) => {
-      return state.id === id
-        ? state.cards.filter((card) => {
-            if (card.cid === cid) {
-              return card;
-            }
-          })
-        : state;
-    });
-
-    const newTodoCard = {
-      name: backlogCard[id - 1][0].name,
-      stage: id,
-      cid: backlogCard[id - 1][0].cid,
-    };
-
-    const newState1 = state.map((obj) => {
-      if (obj.id === id + 1) {
+      if (click > 1 ? obj.id === id - 1 : obj.id === id + 1) {
         obj.cards.push(newTodoCard);
         return { ...obj, cards: obj.cards };
       }
@@ -128,7 +89,7 @@ export default function ViewBacklog() {
                     <p>
                       <button
                         className="btn-primary mybtn"
-                        onClick={() => leftClick(state.id, cards.cid)}
+                        onClick={() => clickEvent(state.id, cards.cid, 2)}
                         disabled={
                           state.id === 1 || state.id === 4
                         }
@@ -137,7 +98,7 @@ export default function ViewBacklog() {
                       </button>
                       <button
                         className="btn-primary mybtn"
-                        onClick={() => rightClick(state.id, cards.cid)}
+                        onClick={() => clickEvent(state.id, cards.cid, 1)}
                         disabled={state.id === 4}
                       >
                         {">"}
