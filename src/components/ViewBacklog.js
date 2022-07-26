@@ -5,60 +5,41 @@ import { Container, Row, Col, Stack } from "react-bootstrap";
 export default function ViewBacklog() {
   const [state, setState] = useContext(BacklogContext);
 
-  // ************************ Both Click Functionality *****************************************
+  // ********************************** Click Functionality *****************************************
   const clickEvent = (id, cid, click) => {
     const backlogCard = state.map((state) => {
       return state.id === id
-        ? state.cards.filter((card) => {
-            if (card.cid === cid) {
-              return card;
-            }
-          })
-        : state;
+        ? state.cards.find((el)=>el.cid === cid) : state;
     });
 
-    const newTodoCard = {
-      name: backlogCard[id - 1][0].name,
-      stage: click > 1 ? id - 2 : id,
-      cid: backlogCard[id - 1][0].cid,
-    };
-
-    const newState1 = state.map((obj) => {
-      if (click > 1 ? obj.id === id - 1 : obj.id === id + 1) {
-        obj.cards.push(newTodoCard);
+    const newState = state.map((obj) => {
+      if (click > 1 ? obj.id === id-1 : obj.id === id+1) {
+        obj.cards.unshift(backlogCard[id-1]);
         return { ...obj, cards: obj.cards };
       }
 
       if (obj.id === id) {
-        return {
-          ...obj,
-          cards: obj.cards.filter((el) => {
-            return el.cid !== cid;
-          }),
-        };
+        return {...obj,cards: obj.cards.filter((el) => el.cid !== cid)};
       }
 
       return obj;
     });
 
-    setState(newState1);
+    setState(newState);
   };
 
+  // ********************************** Delete Functionality *****************************************
   const deleteTask = (id, cid) => {
-    const newState1 = state.map((obj) => {
+    const newState = state.map((obj) => {
       if (obj.id === id) {
-        return {
-          ...obj,
-          cards: obj.cards.filter((el) => {
-            return el.cid !== cid;
-          }),
-        };
+        return {...obj, cards: obj.cards.filter((el) => el.cid !== cid)};
       }
       return obj;
     });
 
-    setState(newState1);
+    setState(newState);
   };
+  
   return (
     <div>
       <Container>
