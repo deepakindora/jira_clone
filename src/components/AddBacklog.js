@@ -17,18 +17,15 @@ function AddBacklog() {
     e.preventDefault();
     // create new card object that i want to add
     const newCard = { name: backlogName, stage: 0, cid: v4() };
+    
     // get backlog object throght filter
     const getBacklogObject = backlog.filter((backlog) => {
-      return backlog.id === 1;
+      return backlog.id === 1 ? backlog.cards.push(newCard) : 0;
     });
-    // push new object in backlog card
-    getBacklogObject[0].cards.push(newCard);
+
     // create newState for adding in Main object
     const newState = backlog.map((obj) => {
-      if (obj.id === 1) {
-        return { ...obj, cards: getBacklogObject[0].cards };
-      }
-      return obj;
+      return obj.id === 1 ? { ...obj, getBacklogObject } : obj;
     });
 
     setBacklog(newState);
